@@ -1,0 +1,6 @@
+{
+    "require": {
+        "mikecao/flight": "^1.3",
+        "erusev/parsedown": "^1.7"
+    }
+}
