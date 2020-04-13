@@ -52,11 +52,15 @@ conf.yaml
 
 ```
 # 博客名称
-site_name: MDblog
+site_name: cr4fun的博客
 # 主题
 theme: default
 # markdown 风格
 markdown: night
+# 作者 author后面填写你的名字
+author: cr4fun
+# 头像 更改为你自己的图片
+face: /assets/logo.png
 ```
 
 ## 运行
