@@ -59,10 +59,14 @@ function getposts(){
     foreach($posts as $post){
         $title = $post['title'];
         $link = $post['link'];
+        $line_2_arr_str = str_replace("/","",$link);
+        $arr = explode("-", $line_2_arr_str);
+        $posttime = "$arr[0]-$arr[1]-$arr[2]";
         $link = str_replace("-","/",$link);
-        $posts_new[] = array('title'=>$title,'link'=>$link);
-    }    
-    return $posts_new;
+        $posts_new[] = array('title'=>$title,'link'=>$link,'posttime'=>$posttime);
+    }
+
+    return array_reverse($posts_new);
 }
 
 function getconfig(){
@@ -74,6 +78,8 @@ $app->route('GET /', function(){
     $posts = getposts();
     $conf = getconfig();
     $site_name = $conf["site_name"];
+    $author = $conf["author"];
+    $face = $conf["face"];
     $theme_css = $conf["theme"];
     $md_css = $conf["markdown"];
     Flight::render('header', array(
@@ -81,6 +87,7 @@ $app->route('GET /', function(){
     ), 'header_content');
     Flight::render('index', array(
         'site_name'=>$site_name,
+        'face' => $face,
         'pages'=>$pages,
         'posts'=>$posts
     ), 'body_content');
@@ -104,6 +111,7 @@ $app->route('GET /@n', function($n){
         $markdown_code = file_get_contents($markdownfile);
         $html_code = $Parsedown->text($markdown_code);
         $title = gettitle($markdownfile);
+        
         Flight::render('header', array(
             'pages' => $pages,
         ), 'header_content');
@@ -127,16 +135,21 @@ $app->route('GET /@y/@m/@d/@n', function($y,$m,$d,$n){
     $pages = getpages();
     $theme_css = $conf["theme"];
     $md_css = $conf["markdown"];
+    $author = $conf["author"];
     $markdownfile = "../posts/$y-$m-$d-$n.md";
     if(file_exists($markdownfile)){
         $Parsedown = new Parsedown();
         $markdown_code = file_get_contents($markdownfile);
-        $html_code = $Parsedown->text($markdown_code);
         $title = gettitle($markdownfile);
+        $markdown_code = str_replace("# $title","",$markdown_code);
+        $html_code = $Parsedown->text($markdown_code);
         Flight::render('header', array(
             'pages' => $pages,
         ), 'header_content');
         Flight::render('post', array(
+            'title' => $title,
+            'posttime' => "$y-$m-$d",
+            'author' => $author,
             'html' => $html_code,
         ), 'body_content');
         Flight::render('layout', array(
