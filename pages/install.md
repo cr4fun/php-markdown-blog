@@ -13,12 +13,31 @@ comporser install
 conf.yaml
 
 ```
-# 博客名称
-site_name: MDblog
+site:
+  # 博客名称
+  name: cr4fun的博客
+  # 博客logo
+  logo: /assets/logo.png
+
 # 主题
-theme: default
-# markdown 风格
-markdown: night
+theme: light
+
+# 作者
+author: 
+  name: cr4fun
+  face: /assets/logo.png
+
+# 友情连接
+friendlinks:
+  -item
+    name: wireframe
+    url: https://wireframe.cc
+  -item
+    name: figma
+    url: https://www.figma.com
+  -item
+    name: invisionapp
+    url: https://www.invisionapp.com/
 ```
 
 ## 运行

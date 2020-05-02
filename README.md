@@ -51,16 +51,31 @@ comporser install
 conf.yaml
 
 ```
-# 博客名称
-site_name: cr4fun的博客
+site:
+  # 博客名称
+  name: cr4fun的博客
+  # 博客logo
+  logo: /assets/logo.png
+
 # 主题
-theme: default
-# markdown 风格
-markdown: night
-# 作者 author后面填写你的名字
-author: cr4fun
-# 头像 更改为你自己的图片
-face: /assets/logo.png
+theme: light
+
+# 作者
+author: 
+  name: cr4fun
+  face: /assets/logo.png
+
+# 友情连接
+friendlinks:
+  -item
+    name: wireframe
+    url: https://wireframe.cc
+  -item
+    name: figma
+    url: https://www.figma.com
+  -item
+    name: invisionapp
+    url: https://www.invisionapp.com/
 ```
 
 ## 运行
@@ -80,3 +95,6 @@ php -S 0.0.0.0:3000
 ## 欢迎 issue
 
 欢迎大家写主题，主题在public/themes文件夹中。可在 conf.yaml 中设置。
+
+## demo
+![](demo.png)

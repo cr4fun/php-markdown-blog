@@ -33,11 +33,11 @@
     src: local('Open Sans Bold Italic'),url('./github/700i.woff') format('woff');
 }
 
-html {
+.markdown {
     font-size: 16px;
 }
 
-body {
+.markdown {
     font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
     color: rgb(51, 51, 51);
     line-height: 1.6;
@@ -54,15 +54,16 @@ body {
     margin-top: 30px;
 }
 
-a {
+.markdown a {
     color: #4183C4;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdownh6 {
     position: relative;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -70,77 +71,77 @@ h6 {
     line-height: 1.4;
     cursor: text;
 }
-h1:hover a.anchor,
-h2:hover a.anchor,
-h3:hover a.anchor,
-h4:hover a.anchor,
-h5:hover a.anchor,
-h6:hover a.anchor {
+.markdown h1:hover a.anchor,
+.markdown h2:hover a.anchor,
+.markdown h3:hover a.anchor,
+.markdown h4:hover a.anchor,
+.markdown h5:hover a.anchor,
+.markdown h6:hover a.anchor {
     text-decoration: none;
 }
-h1 tt,
-h1 code {
+.markdown h1 tt,
+.markdown h1 code {
     font-size: inherit;
 }
-h2 tt,
-h2 code {
+.markdown h2 tt,
+.markdown h2 code {
     font-size: inherit;
 }
-h3 tt,
-h3 code {
+.markdown h3 tt,
+.markdown h3 code {
     font-size: inherit;
 }
-h4 tt,
-h4 code {
+.markdown h4 tt,
+.markdown h4 code {
     font-size: inherit;
 }
-h5 tt,
-h5 code {
+.markdown h5 tt,
+.markdown h5 code {
     font-size: inherit;
 }
-h6 tt,
-h6 code {
+.markdown h6 tt,
+.markdown h6 code {
     font-size: inherit;
 }
-h1 {
+.markdown h1 {
     padding-bottom: .3em;
     font-size: 2.25em;
     line-height: 1.2;
-    border-bottom: 1px solid #eee;
+    
 }
-h2 {
+.markdown h2 {
    padding-bottom: .3em;
     font-size: 1.75em;
     line-height: 1.225;
-    border-bottom: 1px solid #eee;
+    
 }
-h3 {
+.markdown h3 {
     font-size: 1.5em;
     line-height: 1.43;
 }
-h4 {
+.markdown h4 {
     font-size: 1.25em;
 }
-h5 {
+.markdown h5 {
     font-size: 1em;
 }
-h6 {
+.markdown h6 {
    font-size: 1em;
     color: #777;
 }
-p,
-blockquote,
-ul,
-ol,
-dl,
-table{
+.markdown p,
+.markdown blockquote,
+.markdown ul,
+.markdown ol,
+.markdown dl,
+.markdown table{
     margin: 0.8em 0;
 }
-li>ol,
-li>ul {
+.markdown li>ol,
+.markdown li>ul {
     margin: 0 0;
 }
-hr {
+.markdown hr {
     height: 2px;
     padding: 0;
     margin: 16px 0;
@@ -150,60 +151,60 @@ hr {
     box-sizing: content-box;
 }
 
-li p.first {
+.markdown li p.first {
     display: inline-block;
 }
-ul,
-ol {
+.markdown ul,
+.markdown ol {
     padding-left: 30px;
 }
-ul:first-child,
-ol:first-child {
+.markdown ul:first-child,
+.markdown ol:first-child {
     margin-top: 0;
 }
-ul:last-child,
-ol:last-child {
+.markdown ul:last-child,
+.markdown ol:last-child {
     margin-bottom: 0;
 }
-blockquote {
+.markdown blockquote {
     border-left: 4px solid #dfe2e5;
     padding: 0 15px;
     color: #777777;
 }
-blockquote blockquote {
+.markdown blockquote blockquote {
     padding-right: 0;
 }
-table {
+.markdown table {
     padding: 0;
     word-break: initial;
 }
-table tr {
+.markdown table tr {
     border-top: 1px solid #dfe2e5;
     margin: 0;
     padding: 0;
 }
-table tr:nth-child(2n),
+.markdown table tr:nth-child(2n),
 thead {
     background-color: #f8f8f8;
 }
-table tr th {
+.markdown table tr th {
     font-weight: bold;
     border: 1px solid #dfe2e5;
     border-bottom: 0;
     margin: 0;
     padding: 6px 13px;
 }
-table tr td {
+.markdown table tr td {
     border: 1px solid #dfe2e5;
     margin: 0;
     padding: 6px 13px;
 }
-table tr th:first-child,
-table tr td:first-child {
+.markdown table tr th:first-child,
+.markdown table tr td:first-child {
     margin-top: 0;
 }
-table tr th:last-child,
-table tr td:last-child {
+.markdown table tr th:last-child,
+.markdown table tr td:last-child {
     margin-bottom: 0;
 }
 
@@ -228,7 +229,8 @@ tt {
 }
 
 code {
-    background-color: #f3f4f4;
+    background:#222;
+    color: #fff;
     padding: 0 2px 0 2px;
 }
 

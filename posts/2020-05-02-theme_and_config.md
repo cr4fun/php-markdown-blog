@@ -1,3 +1,7 @@
+# 主题和配置文件的变化
+
+在conf.yaml中，和以前不太一样了。
+```
 site:
   # 博客名称
   name: cr4fun的博客
@@ -23,3 +27,4 @@ friendlinks:
   -item
     name: invisionapp
     url: https://www.invisionapp.com/
+```

@@ -4,7 +4,13 @@ use flight\Engine;
 require __DIR__ . '/../lib/spyc.php';
 $app = new Engine();
 
-Flight::set('flight.views.path', '../views');
+function getconfig(){
+    return spyc_load_file('../conf.yaml');
+}
+
+
+$theme = getconfig()['theme'];
+Flight::set('flight.views.path', "../views/$theme");
 
 function getlinks($dir){
     $files = array();
@@ -69,45 +75,33 @@ function getposts(){
     return array_reverse($posts_new);
 }
 
-function getconfig(){
-    return spyc_load_file('../conf.yaml');
-}
+
 
 $app->route('GET /', function(){
     $pages = getpages();
     $posts = getposts();
+
     $conf = getconfig();
-    $site_name = $conf["site_name"];
-    $author = $conf["author"];
-    $face = $conf["face"];
-    $theme_css = $conf["theme"];
-    $md_css = $conf["markdown"];
-    $links = $conf["friendlinks"];
     Flight::render('header', array(
         'pages' => $pages,
+        'site' => $conf['site']
     ), 'header_content');
     Flight::render('index', array(
-        'site_name'=>$site_name,
-        'face' => $face,
+        'site'=> $conf['site'],
+        'author' => $conf["author"],
         'pages'=>$pages,
         'posts'=>$posts
     ), 'body_content');
     Flight::render('layout', array(
-        'site_name' => $site_name,
-        'title' => $site_name,
-        'theme_css' => $theme_css,
-        'md_css'=> $md_css,
-        'links'=> $links
+        'site' => $conf['site'],
+        'theme_css' => $conf["theme"],
+        'links'=> $conf["friendlinks"]
     ));
 });
 
 $app->route('GET /@n', function($n){
     $conf = getconfig();
     $pages = getpages();
-    $site_name = $conf["site_name"];
-    $theme_css = $conf["theme"];
-    $md_css = $conf["markdown"];
-    $links = $conf["friendlinks"];
     $markdownfile = "../pages/$n.md";
     if(file_exists($markdownfile)){
         $Parsedown = new Parsedown();
@@ -117,16 +111,15 @@ $app->route('GET /@n', function($n){
         
         Flight::render('header', array(
             'pages' => $pages,
+            'site' => $conf['site']
         ), 'header_content');
         Flight::render('page', array(
             'html' => $html_code,
         ), 'body_content');
         Flight::render('layout', array(
-            'site_name' => $site_name,
-            'title' => $title,
-            'theme_css' => $theme_css,
-            'md_css'=> $md_css,
-            'links'=> $links
+            'site' => $conf['site'],
+            'theme_css' => $conf["theme"],
+            'links'=> $conf["friendlinks"]
         ));
     }else{
         Flight::render('404');
@@ -135,12 +128,7 @@ $app->route('GET /@n', function($n){
 
 $app->route('GET /@y/@m/@d/@n', function($y,$m,$d,$n){
     $conf = getconfig();
-    $site_name = $conf["site_name"];
     $pages = getpages();
-    $theme_css = $conf["theme"];
-    $md_css = $conf["markdown"];
-    $author = $conf["author"];
-    $links = $conf["friendlinks"];
     $markdownfile = "../posts/$y-$m-$d-$n.md";
     if(file_exists($markdownfile)){
         $Parsedown = new Parsedown();
@@ -148,22 +136,23 @@ $app->route('GET /@y/@m/@d/@n', function($y,$m,$d,$n){
         $title = gettitle($markdownfile);
         $markdown_code = str_replace("# $title","",$markdown_code);
         $html_code = $Parsedown->text($markdown_code);
+        
         Flight::render('header', array(
             'pages' => $pages,
+            'site' => $conf['site']
         ), 'header_content');
         Flight::render('post', array(
             'title' => $title,
             'posttime' => "$y-$m-$d",
-            'author' => $author,
+            'author' => $conf['author'],
             'html' => $html_code,
         ), 'body_content');
         Flight::render('layout', array(
-            'site_name' => $site_name,
-            'title' => $title,
-            'theme_css' => $theme_css,
-            'md_css'=> $md_css,
-            'links'=> $links
+            'site' => $conf['site'],
+            'theme_css' => $conf["theme"],
+            'links'=> $conf["friendlinks"]
         ));
+        
     }else{
         Flight::render('404');
     }
