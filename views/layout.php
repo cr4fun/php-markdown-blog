@@ -10,6 +10,17 @@
 <body>
 <?php echo $header_content; ?>
 <?php echo $body_content; ?>
-<footer><?php echo $site_name;?> powered by <a href="https://github.com/cr4fun/php-markdown-blog">php-markdown-blog</a></footer>
+<footer>
+    <p><?php echo $site_name;?> powered by <a href="https://github.com/cr4fun/php-markdown-blog">php-markdown-blog</a></p>
+    <p>
+        <?php
+            foreach($links as $link){
+                ?>
+                <a href="<?php echo $link['url'] ?>" target="_blank"><?php echo $link['name'] ?></a>
+                <?php
+            }
+        ?>
+    </p>
+</footer>
 </body>
 </html>

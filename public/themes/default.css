@@ -29,3 +29,7 @@ footer{
     padding-top: 20px;
     padding-bottom:20px;
 }
+footer p {
+    margin-bottom: 0;
+    padding:10px;
+}

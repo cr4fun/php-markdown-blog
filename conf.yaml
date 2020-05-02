@@ -8,3 +8,14 @@ markdown: night
 author: cr4fun
 # 头像 更改为你自己的图片
 face: /assets/logo.png
+# 友情连接
+friendlinks:
+  -item
+    name: wireframe
+    url: https://wireframe.cc
+  -item
+    name: figma
+    url: https://www.figma.com
+  -item
+    name: invisionapp
+    url: https://www.invisionapp.com/

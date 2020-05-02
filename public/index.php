@@ -82,6 +82,7 @@ $app->route('GET /', function(){
     $face = $conf["face"];
     $theme_css = $conf["theme"];
     $md_css = $conf["markdown"];
+    $links = $conf["friendlinks"];
     Flight::render('header', array(
         'pages' => $pages,
     ), 'header_content');
@@ -95,7 +96,8 @@ $app->route('GET /', function(){
         'site_name' => $site_name,
         'title' => $site_name,
         'theme_css' => $theme_css,
-        'md_css'=> $md_css
+        'md_css'=> $md_css,
+        'links'=> $links
     ));
 });
 
@@ -105,6 +107,7 @@ $app->route('GET /@n', function($n){
     $site_name = $conf["site_name"];
     $theme_css = $conf["theme"];
     $md_css = $conf["markdown"];
+    $links = $conf["friendlinks"];
     $markdownfile = "../pages/$n.md";
     if(file_exists($markdownfile)){
         $Parsedown = new Parsedown();
@@ -122,7 +125,8 @@ $app->route('GET /@n', function($n){
             'site_name' => $site_name,
             'title' => $title,
             'theme_css' => $theme_css,
-            'md_css'=> $md_css
+            'md_css'=> $md_css,
+            'links'=> $links
         ));
     }else{
         Flight::render('404');
@@ -136,6 +140,7 @@ $app->route('GET /@y/@m/@d/@n', function($y,$m,$d,$n){
     $theme_css = $conf["theme"];
     $md_css = $conf["markdown"];
     $author = $conf["author"];
+    $links = $conf["friendlinks"];
     $markdownfile = "../posts/$y-$m-$d-$n.md";
     if(file_exists($markdownfile)){
         $Parsedown = new Parsedown();
@@ -156,7 +161,8 @@ $app->route('GET /@y/@m/@d/@n', function($y,$m,$d,$n){
             'site_name' => $site_name,
             'title' => $title,
             'theme_css' => $theme_css,
-            'md_css'=> $md_css
+            'md_css'=> $md_css,
+            'links'=> $links
         ));
     }else{
         Flight::render('404');
